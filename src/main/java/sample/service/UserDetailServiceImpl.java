@@ -15,7 +15,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
      * For sample purposes we only check that the ID is of size 11 and contains only digits.
      *
      * @param id that is read from X.509 certificate
-     * @return {@link User} representing the person who authenticated with certificate (it is accessed in controller)
+     * @return {@link User} representing the person who authenticated with certificate (it can be accessed in controller)
      */
     public UserDetails loadUserByUsername(String id) {
 
