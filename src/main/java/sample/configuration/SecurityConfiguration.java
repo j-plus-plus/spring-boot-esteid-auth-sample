@@ -20,10 +20,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated()
+        http.authorizeRequests().anyRequest().authenticated()   // All requests must be authenticated
                 .and()
-                .x509()
-                .subjectPrincipalRegex("serialNumber=([0-9]+)")
-                .userDetailsService(userDetailsService);
+                .x509()                                         // Configure X.509 based pre authentication.
+                .subjectPrincipalRegex("serialNumber=([0-9]+)") // Regex to extract the ID from the certificate
+                .userDetailsService(userDetailsService);        // Look into the package "service"
     }
 }
