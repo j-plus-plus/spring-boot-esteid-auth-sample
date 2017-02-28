@@ -11,14 +11,11 @@ import org.springframework.stereotype.Service;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String username) {
-        //TODO: load ID from db or from somewhere else
-        if (username.equals("")) {
-            return new User(username, "",
-                    AuthorityUtils
-                            .commaSeparatedStringToAuthorityList("ROLE_USER"));
-        } else {
+
+        if (username.length() == 11 && username.matches("[0-9]+"))
+            return new User(username, "", AuthorityUtils.NO_AUTHORITIES);
+        else
             throw new UsernameNotFoundException(String.format("User with username=%s was not found", username));
-        }
     }
 
 }
